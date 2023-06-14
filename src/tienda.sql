@@ -28,6 +28,17 @@ CREATE TABLE usuarios (
     validado bool         NOT NULL
 );
 
+DROP TABLE IF EXISTS comentarios CASCADE;
+
+CREATE TABLE comentarios (
+    id       bigserial    PRIMARY KEY,
+    articulo_id bigint NOT NULL REFERENCES articulos (id),
+    usuario_id  bigint NOT NULL REFERENCES usuarios (id),
+    comentario  VARCHAR NOT NULL
+);
+
+
+
 DROP TABLE IF EXISTS facturas CASCADE;
 
 CREATE TABLE facturas (
@@ -57,11 +68,8 @@ INSERT INTO categorias (nombre)
 INSERT INTO articulos (codigo, categoria_id, descripcion, precio, stock)
     VALUES ('18273892389', 1, 'Yogur piña', 200.50, 4),
            ('83745828273', 1, 'Tigretón', 50.10, 2),
-           ('51736128495', 1, 'Disco duro SSD 500 GB', 150.30, 0),
-           ('83746828273', 1, 'Tigretón', 50.10, 3),
-           ('51786128435', 1,  'Disco duro SSD 500 GB', 150.30, 5),
-           ('83745228673', 1, 'Tigretón', 50.10, 8),
-           ('51786198495', 1, 'Disco duro SSD 500 GB', 150.30, 1);
+           ('51736128495', 1, 'Disco duro SSD 500 GB', 150.30, 0);
+
 
 INSERT INTO usuarios (usuario, password, validado)
     VALUES ('admin', crypt('admin', gen_salt('bf', 10)), true),

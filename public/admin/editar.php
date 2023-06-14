@@ -48,6 +48,11 @@ session_start() ?>
     require '../../src/_alerts.php';
     ?>
 
+    <div class="container mx-auto">
+        <?php require '../../src/_menu.php' ?>
+        <?php require '../../src/_alerts.php' ?>
+    </div>
+
     <form class="mt-5 mr-96 ml-96" action="" method="POST">
         <div class="mb-6">
             <label for="departamento" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Código</label>
